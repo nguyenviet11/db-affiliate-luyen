@@ -63,7 +63,11 @@ app.post("/api/create-item", async (req, res) => {
   }
 });
 
-mongoose.connect(process.env.MONGODB_URL)
+mongoose.connect(process.env.MONGODB_URL,{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  poolSize: 15, 
+})
   .then((result) => {
     console.log("connectd");
     app.listen(3000);
